@@ -1,5 +1,4 @@
-const {Client, MessageMedia} = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+const {MessageMedia} = require('whatsapp-web.js');
 const {groups, test} = require('./data');
 
 // variables
@@ -29,28 +28,11 @@ async function sendMessageOrImage(_groupName, _chats, _messageOrImage) {
 	}
 }
 
-// crear instancia del cliente
-const client = new Client();
-
-// creacion de codigo qr
-client.on('qr', (qr) => {
-	qrcode.generate(qr, {small: true});
-});
-
-// hacer autentificacion
-client.on('authenticated', () => {
-	console.log('Authenticated');
-});
-
-// inicializar al cliente
-client.initialize();
-
 module.exports = {
 	groupNames,
 	image,
 	message,
-	sendMessageOrImage,
-	client,
+	sendMessageOrImage
 };
 
 

@@ -1,4 +1,21 @@
-const {sendMessageOrImage, image, groupNames, client} = require('./app');
+const {Client} = require('whatsapp-web.js');
+const {sendMessageOrImage, image, groupNames} = require('./app');
+
+// crear instancia del cliente
+const client = new Client();
+
+// creacion de codigo qr
+client.on('qr', (qr) => {
+	qrcode.generate(qr, {small: true});
+});
+
+// hacer autentificacion
+client.on('authenticated', () => {
+	console.log('Authenticated');
+});
+
+// inicializar al cliente
+client.initialize();
 
 // envio de la imagen a los grupos
 client.on('ready', async () => {
