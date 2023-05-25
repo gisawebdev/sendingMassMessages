@@ -4,12 +4,12 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"message": "node message.js",
-		"image": "node image.js",
-		"test": "node test.js"
+		"start": "node app.js",
+		"test": "node test.js",
+		"archive": "node archiveChats.js"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "gisawebdev",
 	"license": "ISC",
 	"dependencies": {
 		"qrcode-terminal": "^0.12.0",
