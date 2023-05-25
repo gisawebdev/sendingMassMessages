@@ -49,10 +49,11 @@ const groups = [
 	'PÁTZCUARO (Mexico)',
 	'NAOLINCO (Mexico)',
 	'CITLALTEPETL (México)',
+	'IGUALA DE LA IND.(Mexico)',
+	'VILLA ALDAMA (Mexico)',
 ];
 
 const test = ['VILLA ALDAMA (Mexico)', 'G. HELIODORO C. (Mexico)'];
-
 
 /*
 const groups = [
