@@ -4,10 +4,9 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"message": "node message.js",
-		"image": "node image.js",
+		"start": "node app.js",
 		"test": "node test.js",
-		"start": "node app.js"
+		"archive": "node archiveChats.js"
 	},
 	"keywords": [],
 	"author": "gisawebdev",
