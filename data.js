@@ -53,7 +53,66 @@ const groups = [
 	'VILLA ALDAMA (Mexico)',
 ];
 
+const bolivia = [
+	'TRINIDAD DEL CERCADO (Bo)',
+	'VILLA ALCALÁ (Bolivia)',
+	'TARIJA (Bolivia)',
+	'POTOSÍ (Bolivia)',
+	'EL VILLAR (Bolivia)',
+	'SOPACHUY (Bolivia)',
+	'COBIJA (Bolivia)',
+	'PADILLA (Bolivia)',
+	'VILLA SERRANO (Bolivia)',
+];
+
+const republicaDominicana = [
+	'PADRE LAS CASAS (R.D)',
+	'MONTE PLATA (R.D)',
+	'STA.CRUZ DEL SEIBO (R.D)',
+	'STO.DGO. NORTE (R.D)',
+	'SABANA YEGUA (R.D)',
+	'YAYAS DE VIAJAMA (R.D)',
+];
+
+const mexico = [
+	'S.M CHALCHICUAUTLA (Mex)',
+	'SANTIAGO DE TUXTLA (Mex)',
+	'ATOYAC DE ÁLVAREZ (Mex)',
+	'VILLA DE TUTUTEPEC (Mex)',
+	'SAN ANDRÉS TUXTLA (Mex)',
+	'SAN JUAN DE SABINAS (Mex)',
+	'TATAHUICAPAN JUAREZ (Mex)',
+	'MECAYAPAN (Mexico)',
+	'LORETO (Mexico)',
+	'TANCOCO (Mexico)',
+	'GARCÍA (Mexico)',
+	'HIDALGOTITLAN (Mexico)',
+	'MARÍN (Mexico)',
+	'ALPOYECA (México)',
+	'BENITO JUÁREZ (México)',
+	'ITURBIDE (Mexico)',
+	'OTEAPAN (Mexico)',
+	'LOS REYES (Mexico)',
+	'LOS HERRERA (Mexico)',
+	'CATEMACO (Mexico)',
+	'CHINA (México)',
+	'EDUARDO NERI (México)',
+	'CHILPANCINGO (Mexico)',
+	'GENERAL BRAVO (Mexico)',
+	'COACOATZINTLA (México)',
+	'HIGUERAS (Mexico)',
+	'GENERAL ZARAGOZA (Mexico)',
+	'BALANCAN (México)',
+	'PÁTZCUARO (Mexico)',
+	'NAOLINCO (Mexico)',
+	'CITLALTEPETL (México)',
+	'IGUALA DE LA IND.(Mexico)',
+	'VILLA ALDAMA (Mexico)',
+];
+
 const test = ['VILLA ALDAMA (Mexico)', 'G. HELIODORO C. (Mexico)'];
+
+module.exports = {groups, test, bolivia, republicaDominicana, mexico};
 
 /*
 const groups = [
@@ -463,5 +522,3 @@ const test = [
 	},
 ];
 */
-
-module.exports = {groups, test};

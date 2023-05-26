@@ -1,12 +1,12 @@
 const {Client, MessageMedia} = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const {groups, test} = require('./data');
+const {groups, test, bolivia, republicaDominicana} = require('./data');
 
 // variables
 
 let counter = 0;
-const groupNames = test;
-const imagePath = '';
+const groupNames = groups;
+const imagePath = 'assets/img/Imagen fin de semana 260523.png';
 const message = '';
 
 const isMessage = message !== '';
