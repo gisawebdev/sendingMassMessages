@@ -1,10 +1,11 @@
-const {Client} = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+import pkg from 'whatsapp-web.js';
+import qrcode from 'qrcode-terminal';
 
-let counter = 0;
+const {Client} = pkg;
 
 // crear instancia del cliente
 const client = new Client();
+let counter = 0;
 
 // creacion de codigo qr
 client.on('qr', (qr) => {

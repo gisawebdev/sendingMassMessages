@@ -1,4 +1,4 @@
-const groups = [
+export const groups = [
 	'TRINIDAD DEL CERCADO (Bo)',
 	'VILLA ALCALÁ (Bolivia)',
 	'TARIJA (Bolivia)',
@@ -53,7 +53,7 @@ const groups = [
 	'VILLA ALDAMA (Mexico)',
 ];
 
-const bolivia = [
+export const bolivia = [
 	'TRINIDAD DEL CERCADO (Bo)',
 	'VILLA ALCALÁ (Bolivia)',
 	'TARIJA (Bolivia)',
@@ -65,7 +65,7 @@ const bolivia = [
 	'VILLA SERRANO (Bolivia)',
 ];
 
-const republicaDominicana = [
+export const republicaDominicana = [
 	'PADRE LAS CASAS (R.D)',
 	'MONTE PLATA (R.D)',
 	'STA.CRUZ DEL SEIBO (R.D)',
@@ -74,7 +74,7 @@ const republicaDominicana = [
 	'YAYAS DE VIAJAMA (R.D)',
 ];
 
-const mexico = [
+export const mexico = [
 	'S.M CHALCHICUAUTLA (Mex)',
 	'SANTIAGO DE TUXTLA (Mex)',
 	'ATOYAC DE ÁLVAREZ (Mex)',
@@ -110,9 +110,7 @@ const mexico = [
 	'VILLA ALDAMA (Mexico)',
 ];
 
-const test = ['VILLA ALDAMA (Mexico)', 'G. HELIODORO C. (Mexico)'];
-
-module.exports = {groups, test, bolivia, republicaDominicana, mexico};
+export const test = ['VILLA ALDAMA (Mexico)', 'G. HELIODORO C. (Mexico)'];
 
 /*
 const groups = [

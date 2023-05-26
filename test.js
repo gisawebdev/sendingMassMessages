@@ -1,6 +1,8 @@
-const {Client} = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
-const {groups, test} = require('./data');
+import pkg from 'whatsapp-web.js';
+import qrcode from 'qrcode-terminal';
+import {groups, test} from './data.js';
+
+const {Client} = pkg;
 
 // crear instancia del cliente
 const client = new Client();
@@ -14,7 +16,6 @@ client.on('qr', (qr) => {
 client.on('authenticated', () => {
 	console.log('Authenticated');
 });
-
 
 // inicializar al cliente
 client.initialize();
@@ -44,5 +45,3 @@ client.on('ready', async () => {
 		client.destroy();
 	}
 });
-
-
