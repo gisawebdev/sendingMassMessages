@@ -1,33 +1,38 @@
+import {existsSync} from 'node:fs';
 import pkg from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
 import {groups, test} from './data.js';
+import ora from 'ora';
+import chalk from 'chalk';
 
-const {Client} = pkg;
+const {Client, LocalAuth} = pkg;
+const SESSION_FILE_PATH = 'session';
 
-// crear instancia del cliente
-const client = new Client();
+let client;
+let spinner;
 
-// creacion de codigo qr
-client.on('qr', (qr) => {
-	qrcode.generate(qr, {small: true});
-});
+const withSession = () => {
+	spinner = ora(
+		`Cargando ${chalk.green('Validando session con Whatsapp...\n')}`,
+	);
+	spinner.start();
+	console.log('------------------------------------------');
 
-// hacer autentificacion
-client.on('authenticated', () => {
-	console.log('Authenticated');
-});
+	client = new Client({
+		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
+		puppeteer: {
+			headless: true,
+			executablePath:
+				'../../../../../Program Files/Google/Chrome/Application/chrome.exe',
+		},
+	});
 
-// inicializar al cliente
-client.initialize();
+	// envio de la imagen o mensaje a los grupos
+	client.on('ready', async () => {
+		console.log('Client is ready');
+		spinner.stop();
 
-// envio de la imagen a los grupos
-client.on('ready', async () => {
-	console.log('Client is ready');
-
-	try {
 		await client.getChats().then((chats) => {
-			// console.log(chats);
-
 			test.forEach((chatName, i) => {
 				const myChat = chats.find((chat) => chat.name === chatName);
 
@@ -39,9 +44,49 @@ client.on('ready', async () => {
 				}
 			});
 		});
-	} catch (error) {
-		console.log(error);
-	} finally {
-		client.destroy();
-	}
-});
+	});
+
+	client.on('auth_failure', () => {
+		spinner.stop();
+		console.log(
+			chalk.red(
+				`Error de autentificacion vuelve a generar el codigo QR ${chalk.yellow(
+					'(Borrar la carpeta session)',
+				)}`,
+			),
+		);
+	});
+
+	client.initialize();
+};
+
+// function para generar codigo qr
+const withOutSession = () => {
+	console.log('No tenemos session guardada');
+
+	spinner = ora(`Generando ${chalk.blue('Codigo QR...\n')}`);
+	spinner.start();
+
+	client = new Client({
+		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
+		puppeteer: {
+			headless: true,
+		},
+	});
+
+	// creacion de codigo qr
+	client.on('qr', (qr) => {
+		qrcode.generate(qr, {small: true});
+	});
+
+	// hacer autentificacion
+	client.on('authenticated', () => {
+		console.log('Authenticado');
+		spinner.stop();
+	});
+
+	// inicializar al cliente
+	client.initialize();
+};
+
+existsSync(SESSION_FILE_PATH) ? withSession() : withOutSession();

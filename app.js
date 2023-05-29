@@ -14,13 +14,14 @@ const SESSION_FILE_PATH = 'session';
 let spinner;
 const groupNames = test;
 
-const message = 'prueba';
+const message = '';
 const imagePath = '';
 const videoPath = '';
 
 const isMessage = message !== '';
 const isImage = imagePath !== '';
 const isVideo = videoPath !== '';
+const isAllEmpty = !isMessage && !isImage && !isVideo;
 
 const image = isImage ? MessageMedia.fromFilePath(imagePath) : '';
 const video = isVideo ? MessageMedia.fromFilePath(videoPath) : '';
@@ -34,6 +35,7 @@ const withSession = () => {
 		`Cargando ${chalk.green('Validando session con Whatsapp...\n')}`,
 	);
 	spinner.start();
+	console.log('------------------------------------------');
 
 	client = new Client({
 		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
@@ -64,12 +66,21 @@ const withSession = () => {
 						sendVideo(chatName, chats, video);
 					}
 
+					if (isAllEmpty) {
+						console.log(
+							`Debe colocar un ${chalk.green('Mensaje')}, una ${chalk.blue(
+								'Imagen',
+							)} o un ${chalk.yellow('Video')}`,
+						);
+						process.exit(1);
+					}
+
 					if (counter === groupNames.length) {
 						setTimeout(() => {
 							console.log('------------------------------------------');
 							console.log('termino🎉🎉🎉🎉🎉');
 							process.exit(1);
-						}, i * 10000);
+						}, 30000);
 					}
 				}, i * 10000);
 			});
