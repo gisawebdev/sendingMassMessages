@@ -5,30 +5,25 @@ import ora from 'ora';
 import chalk from 'chalk';
 import {groups, test, bolivia, republicaDominicana} from './data.js';
 import sendMessage from './controllers/sendMessage.js';
-import sendImage from './controllers/sendImage.js';
-import sendVideo from './controllers/sendVideo.js';
+import sendMedia from './controllers/sendMedia.js';
 
 const {Client, MessageMedia, LocalAuth} = pkg;
 const SESSION_FILE_PATH = 'session';
 
 let spinner;
-const groupNames = test;
+const groupNames = groups;
 
 const message = '';
-const imagePath = '';
-const videoPath = '';
+const mediaPath = 'assets/pdf/Consejos_estudio_del_Diplomado.pdf';
 
 const isMessage = message !== '';
-const isImage = imagePath !== '';
-const isVideo = videoPath !== '';
-const isAllEmpty = !isMessage && !isImage && !isVideo;
+const isMedia = mediaPath !== '';
+const isAllEmpty = !isMessage && !isMedia;
 
-const image = isImage ? MessageMedia.fromFilePath(imagePath) : '';
-const video = isVideo ? MessageMedia.fromFilePath(videoPath) : '';
+const media = isMedia ? MessageMedia.fromFilePath(mediaPath) : '';
+let counter = 0;
 
 export let client;
-
-let counter = 0;
 
 const withSession = () => {
 	spinner = ora(
@@ -59,18 +54,15 @@ const withSession = () => {
 					if (isMessage) {
 						sendMessage(chatName, chats, message);
 					}
-					if (isImage) {
-						sendImage(chatName, chats, image);
-					}
-					if (isVideo) {
-						sendVideo(chatName, chats, video);
+					if (isMedia) {
+						sendMedia(chatName, chats, media);
 					}
 
 					if (isAllEmpty) {
 						console.log(
 							`Debe colocar un ${chalk.green('Mensaje')}, una ${chalk.blue(
 								'Imagen',
-							)} o un ${chalk.yellow('Video')}`,
+							)}, un ${chalk.yellow('Video')} o un ${chalk.red('PDF')}`,
 						);
 						process.exit(1);
 					}
