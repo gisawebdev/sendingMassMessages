@@ -14,7 +14,7 @@ let spinner;
 const groupNames = groups;
 
 const message = '';
-const mediaPath = 'assets/pdf/Consejos_estudio_del_Diplomado.pdf';
+const mediaPath = 'assets/img/Imagen_finde_020623.png';
 
 const isMessage = message !== '';
 const isMedia = mediaPath !== '';
