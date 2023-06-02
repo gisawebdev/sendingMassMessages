@@ -12,6 +12,6 @@ export const SESSION_FILE_PATH = 'session';
  * Esta es la constante que guarda el arreglo de los nombres de los grupos.
  * @constant {string[]} groupNames
  */
-export const groupNames = test;
+export const groupNames = groups;
 
 existsSync(SESSION_FILE_PATH) ? withSession() : withOutSession();

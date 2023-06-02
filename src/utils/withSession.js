@@ -16,7 +16,7 @@ const message = '';
  * Esta es la constante que guarda la ruta de la multimedia a enviar.
  * @constant {string} mediaPath
  */
-const mediaPath = 'assets/img/Imagen_finde_020623.png';
+const mediaPath = 'assets/img/Clase_31.png';
 
 /**
  * Esta es la constante que guarda la multimedia a enviar.
