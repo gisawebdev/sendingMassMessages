@@ -1,7 +1,7 @@
 import {existsSync} from 'node:fs';
 import pkg from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
-import {groups, test} from './data.js';
+import {groups, test} from './src/data/data.js';
 import ora from 'ora';
 import chalk from 'chalk';
 
@@ -33,6 +33,8 @@ const withSession = () => {
 		spinner.stop();
 
 		await client.getChats().then((chats) => {
+
+
 			test.forEach((chatName, i) => {
 				const myChat = chats.find((chat) => chat.name === chatName);
 

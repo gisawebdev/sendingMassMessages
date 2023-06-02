@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"type": "module",
 	"scripts": {
-		"start": "node app.js",
+		"start": "node ./src/app.js",
 		"test": "node test.js",
 		"archive": "node archiveChats.js"
 	},
@@ -13,11 +13,12 @@
 	"author": "gisawebdev",
 	"license": "ISC",
 	"dependencies": {
-		"qrcode-terminal": "^0.12.0",
-		"whatsapp-web.js": "^1.21.0"
+		"qrcode-terminal": "0.12.0",
+		"whatsapp-web.js": "1.21.0"
 	},
 	"devDependencies": {
-		"chalk": "^5.2.0",
-		"ora": "^6.3.1"
+		"chalk": "5.2.0",
+		"jsdoc": "4.0.2",
+		"ora": "6.3.1"
 	}
 }

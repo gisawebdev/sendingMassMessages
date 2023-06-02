@@ -1,31 +1,71 @@
-import {existsSync} from 'node:fs';
-import pkg from 'whatsapp-web.js';
-import qrcode from 'qrcode-terminal';
 import ora from 'ora';
 import chalk from 'chalk';
-import {groups, test, bolivia, republicaDominicana} from './data.js';
-import sendMessage from './controllers/sendMessage.js';
-import sendMedia from './controllers/sendMedia.js';
+import pkg from 'whatsapp-web.js';
+import {SESSION_FILE_PATH, groupNames} from '../app.js';
+import {sendMedia, sendMessage} from '../controllers/index.js';
 
 const {Client, MessageMedia, LocalAuth} = pkg;
-const SESSION_FILE_PATH = 'session';
 
-let spinner;
-const groupNames = groups;
-
+/**
+ * Esta es la constante que guarda el mensaje a enviar.
+ * @constant {string} message
+ */
 const message = '';
+
+/**
+ * Esta es la constante que guarda la ruta de la multimedia a enviar.
+ * @constant {string} mediaPath
+ */
 const mediaPath = 'assets/img/Imagen_finde_020623.png';
 
-const isMessage = message !== '';
-const isMedia = mediaPath !== '';
-const isAllEmpty = !isMessage && !isMedia;
+/**
+ * Esta es la constante que guarda la multimedia a enviar.
+ * @constant {pkg.MessageMedia} media
+ */
+const media = MessageMedia.fromFilePath(mediaPath);
 
-const media = isMedia ? MessageMedia.fromFilePath(mediaPath) : '';
+/**
+ * Variable que guarda el contador.
+ *  @type {number}
+ */
 let counter = 0;
 
-export let client;
+/**
+ * Variable que guarda la instancia del cliente.
+ *  @type {pkg.Client}
+ */
+let client;
 
-const withSession = () => {
+/**
+ * Variable que guarda el spinner.
+ *  @type {ora}
+ */
+let spinner;
+
+/**
+ * Variable que guarda la validacion si es un mensaje a enviar.
+ *  @constant {boolean} isMessage
+ */
+const isMessage = message !== '';
+
+/**
+ * Variable que guarda la validacion si es un multimedia a enviar.
+ *  @constant {boolean} isMedia
+ */
+const isMedia = mediaPath !== '';
+
+/**
+ * Variable que guarda la validacion si todo esta vacio.
+ *  @constant {boolean} isAllEmpty
+ */
+const isAllEmpty = !isMessage && !isMedia;
+
+/**
+ * Funcion que valida la sesion de Whatsapp.
+ * @function withSession
+ * @returns {void}
+ */
+export const withSession = () => {
 	spinner = ora(
 		`Cargando ${chalk.green('Validando session con Whatsapp...\n')}`,
 	);
@@ -52,10 +92,10 @@ const withSession = () => {
 					counter++;
 
 					if (isMessage) {
-						sendMessage(chatName, chats, message);
+						sendMessage(chatName, chats, client, message);
 					}
 					if (isMedia) {
-						sendMedia(chatName, chats, media);
+						sendMedia(chatName, chats, client, media);
 					}
 
 					if (isAllEmpty) {
@@ -92,34 +132,3 @@ const withSession = () => {
 
 	client.initialize();
 };
-
-// function para generar codigo qr
-const withOutSession = () => {
-	console.log('No tenemos session guardada');
-
-	spinner = ora(`Generando ${chalk.blue('Codigo QR...\n')}`);
-	spinner.start();
-
-	client = new Client({
-		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
-		puppeteer: {
-			headless: true,
-		},
-	});
-
-	// creacion de codigo qr
-	client.on('qr', (qr) => {
-		qrcode.generate(qr, {small: true});
-	});
-
-	// hacer autentificacion
-	client.on('authenticated', () => {
-		console.log('Authenticado');
-		spinner.stop();
-	});
-
-	// inicializar al cliente
-	client.initialize();
-};
-
-existsSync(SESSION_FILE_PATH) ? withSession() : withOutSession();
