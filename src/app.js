@@ -4,7 +4,7 @@ import {withSession, withOutSession} from './utils/index.js';
 
 /**
  * Esta es la constante que guarda la session de Whatsapp.
- * @constant {string} SESSION_FILE_PATH 
+ * @constant {string} SESSION_FILE_PATH
  */
 export const SESSION_FILE_PATH = 'session';
 

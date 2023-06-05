@@ -16,13 +16,13 @@ const message = '';
  * Esta es la constante que guarda la ruta de la multimedia a enviar.
  * @constant {string} mediaPath
  */
-const mediaPath = 'assets/img/Clase_31.png';
+const mediaPath = '';
 
 /**
  * Esta es la constante que guarda la multimedia a enviar.
- * @constant {pkg.MessageMedia} media
+ * @constant {pkg.MessageMedia | string } media
  */
-const media = MessageMedia.fromFilePath(mediaPath);
+const media = mediaPath !== '' ? MessageMedia.fromFilePath(mediaPath) : '';
 
 /**
  * Variable que guarda el contador.
@@ -102,7 +102,9 @@ export const withSession = () => {
 						console.log(
 							`Debe colocar un ${chalk.green('Mensaje')}, una ${chalk.blue(
 								'Imagen',
-							)}, un ${chalk.yellow('Video')} o un ${chalk.red('PDF')}`,
+							)}, un ${chalk.yellow('Video')}, un ${chalk.red(
+								'PDF',
+							)} o un un ${chalk.magenta('Enlace')}`,
 						);
 						process.exit(1);
 					}
