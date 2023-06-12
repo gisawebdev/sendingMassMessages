@@ -16,7 +16,7 @@ const message = '';
  * Esta es la constante que guarda la ruta de la multimedia a enviar.
  * @constant {string} mediaPath
  */
-const mediaPath = 'assets/img/Imagen_fin_de_semana_090623.png';
+const mediaPath = 'assets/img/Clase_32.png';
 
 /**
  * Esta es la constante que guarda la multimedia a enviar.
@@ -76,8 +76,8 @@ export const withSession = () => {
 		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
 		puppeteer: {
 			headless: true,
-			executablePath:
-				'../../../../../Program Files/Google/Chrome/Application/chrome.exe',
+			// executablePath:'../../../../../Program Files/Google/Chrome/Application/chrome.exe',
+			executablePath:'../../../../../../../../Program Files/Google/Chrome/Application/chrome.exe',
 		},
 	});
 
