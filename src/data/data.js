@@ -1,4 +1,4 @@
-export const groups = [
+const groups = [
 	'TRINIDAD DEL CERCADO (Bo)',
 	'VILLA ALCALÁ (Bolivia)',
 	'TARIJA (Bolivia)',
@@ -53,7 +53,7 @@ export const groups = [
 	'VILLA ALDAMA (Mexico)',
 ];
 
-export const bolivia = [
+const bolivia = [
 	'TRINIDAD DEL CERCADO (Bo)',
 	'VILLA ALCALÁ (Bolivia)',
 	'TARIJA (Bolivia)',
@@ -65,7 +65,7 @@ export const bolivia = [
 	'VILLA SERRANO (Bolivia)',
 ];
 
-export const republicaDominicana = [
+const republicaDominicana = [
 	'PADRE LAS CASAS (R.D)',
 	'MONTE PLATA (R.D)',
 	'STA.CRUZ DEL SEIBO (R.D)',
@@ -74,7 +74,7 @@ export const republicaDominicana = [
 	'YAYAS DE VIAJAMA (R.D)',
 ];
 
-export const mexico = [
+const mexico = [
 	'S.M CHALCHICUAUTLA (Mex)',
 	'SANTIAGO DE TUXTLA (Mex)',
 	'ATOYAC DE ÁLVAREZ (Mex)',
@@ -107,10 +107,26 @@ export const mexico = [
 	'NAOLINCO (Mexico)',
 	'CITLALTEPETL (México)',
 	'IGUALA DE LA IND.(Mexico)',
-	'VILLA ALDAMA (Mexico)',
 ];
 
-export const test = ['VILLA ALDAMA (Mexico)', 'G. HELIODORO C. (Mexico)'];
+const elSalvador = ['ILOPANGO (El Salvador)'];
+const guatemala = ['PASTORES (Guatemala)'];
+const argentina = ['GUALEGUAYCHÚ (Argentina)'];
+const peru = ['ATE (Perú)'];
+
+const test = ['VILLA ALDAMA (Mexico)', 'G. HELIODORO C. (Mexico)'];
+
+export {
+	groups,
+	bolivia,
+	republicaDominicana,
+	mexico,
+	elSalvador,
+	guatemala,
+	argentina,
+	peru,
+	test,
+};
 
 /*
 const groups = [

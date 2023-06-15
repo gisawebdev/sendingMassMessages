@@ -1,10 +1,10 @@
 import ora from 'ora';
 import chalk from 'chalk';
 import pkg from 'whatsapp-web.js';
-import {SESSION_FILE_PATH, groupNames} from '../app.js';
-import {sendMedia, sendMessage} from '../controllers/index.js';
+import { SESSION_FILE_PATH, groupNames } from '../app.js';
+import { sendMedia, sendMessage } from '../controllers/index.js';
 
-const {Client, MessageMedia, LocalAuth} = pkg;
+const { Client, MessageMedia, LocalAuth } = pkg;
 
 /**
  * Esta es la constante que guarda el mensaje a enviar.
@@ -16,7 +16,7 @@ const message = '';
  * Esta es la constante que guarda la ruta de la multimedia a enviar.
  * @constant {string} mediaPath
  */
-const mediaPath = 'assets/img/Clase_32.png';
+const mediaPath = '';
 
 /**
  * Esta es la constante que guarda la multimedia a enviar.
@@ -73,11 +73,12 @@ export const withSession = () => {
 	console.log('------------------------------------------');
 
 	client = new Client({
-		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
+		authStrategy: new LocalAuth({ dataPath: SESSION_FILE_PATH }),
 		puppeteer: {
 			headless: true,
-			// executablePath:'../../../../../Program Files/Google/Chrome/Application/chrome.exe',
-			executablePath:'../../../../../../../../Program Files/Google/Chrome/Application/chrome.exe',
+			executablePath:
+				'../../../../../Program Files/Google/Chrome/Application/chrome.exe',
+			// executablePath:'../../../../../../../../Program Files/Google/Chrome/Application/chrome.exe',
 		},
 	});
 

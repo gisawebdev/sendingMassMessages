@@ -1,6 +1,12 @@
-import {existsSync} from 'node:fs';
-import {groups, test} from './data/data.js';
-import {withSession, withOutSession} from './utils/index.js';
+import { existsSync } from 'node:fs';
+import { withSession, withOutSession } from './utils/index.js';
+import {
+	bolivia,
+	groups,
+	mexico,
+	republicaDominicana,
+	test,
+} from './data/data.js';
 
 /**
  * Esta es la constante que guarda la session de Whatsapp.
