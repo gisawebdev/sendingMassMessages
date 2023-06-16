@@ -50,7 +50,6 @@ const groups = [
 	'NAOLINCO (Mexico)',
 	'CITLALTEPETL (México)',
 	'IGUALA DE LA IND.(Mexico)',
-	'VILLA ALDAMA (Mexico)',
 ];
 
 const bolivia = [
