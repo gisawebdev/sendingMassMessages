@@ -10,13 +10,13 @@ const { Client, MessageMedia, LocalAuth } = pkg;
  * Esta es la constante que guarda el mensaje a enviar.
  * @constant {string} message
  */
-const message = '';
+const message = ``;
 
 /**
  * Esta es la constante que guarda la ruta de la multimedia a enviar.
  * @constant {string} mediaPath
  */
-const mediaPath = 'assets/img/Clase_33.png';
+const mediaPath = '';
 
 /**
  * Esta es la constante que guarda la multimedia a enviar.
