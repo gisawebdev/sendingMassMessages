@@ -2,9 +2,10 @@ import pkg from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
 import chalk from 'chalk';
 import ora from 'ora';
-import {SESSION_FILE_PATH} from '../app.js';
+import { SESSION_FILE_PATH } from '../app.js';
+import { withSession } from './index.js';
 
-const {Client, LocalAuth} = pkg;
+const { Client, LocalAuth } = pkg;
 
 /**
  * Variable que guarda la instancia del cliente.
@@ -30,7 +31,7 @@ export const withOutSession = () => {
 	spinner.start();
 
 	client = new Client({
-		authStrategy: new LocalAuth({dataPath: SESSION_FILE_PATH}),
+		authStrategy: new LocalAuth({ dataPath: SESSION_FILE_PATH }),
 		puppeteer: {
 			headless: true,
 		},
@@ -38,13 +39,15 @@ export const withOutSession = () => {
 
 	// creacion de codigo qr
 	client.on('qr', (qr) => {
-		qrcode.generate(qr, {small: true});
+		qrcode.generate(qr, { small: true });
 	});
 
 	// hacer autentificacion
 	client.on('authenticated', () => {
-		console.log('Authenticado');
 		spinner.stop();
+		console.log('Authenticated');
+		console.log('Ejecutando withSession');
+		withSession;
 	});
 
 	// inicializar al cliente
