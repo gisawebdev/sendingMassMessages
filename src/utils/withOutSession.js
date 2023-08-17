@@ -47,7 +47,7 @@ export const withOutSession = () => {
 		spinner.stop();
 		console.log('Authenticated');
 		console.log('Ejecutando withSession');
-		withSession;
+		withSession();
 	});
 
 	// inicializar al cliente
